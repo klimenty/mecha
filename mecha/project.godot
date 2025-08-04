@@ -11,5 +11,10 @@ config_version=5
 [application]
 
 config/name="mecha"
+run/main_scene="uid://cne2n5rchq5ps"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
