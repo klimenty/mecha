@@ -36,7 +36,6 @@ animations = [{
 
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_g2els")
-movement_speed = 100.0
 
 [node name="PlayerCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_g2els")
