@@ -1,20 +1,46 @@
-[gd_scene load_steps=4 format=3 uid="uid://rhsv4wap5w5m"]
+[gd_scene load_steps=7 format=3 uid="uid://rhsv4wap5w5m"]
 
-[ext_resource type="Texture2D" uid="uid://b4jf7lrw2so5y" path="res://icon.svg" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://8sw4s2n4e3y1" path="res://scripts/player_movement.gd" id="1_g2els"]
+[ext_resource type="Texture2D" uid="uid://cxg4tvj3sqnkf" path="res://Sprite_player/64X128_Idle_Free.png" id="2_g2els"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g2els"]
 radius = 35.0
 height = 124.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
+atlas = ExtResource("2_g2els")
+region = Rect2(0, 128, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g2els"]
+atlas = ExtResource("2_g2els")
+region = Rect2(0, 256, 64, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dqkch"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qhqgy")
+}],
+"loop": true,
+"name": &"left",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g2els")
+}],
+"loop": true,
+"name": &"right",
+"speed": 1.0
+}]
+
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_g2els")
 movement_speed = 100.0
 
-[node name="Sprite" type="Sprite2D" parent="."]
-position = Vector2(0, 2.38419e-07)
-scale = Vector2(0.5625, 0.984375)
-texture = ExtResource("1_3vyb7")
-
 [node name="PlayerCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_g2els")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_dqkch")
+animation = &"right"
