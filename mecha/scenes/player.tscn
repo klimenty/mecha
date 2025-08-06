@@ -802,6 +802,7 @@ height = 124.0
 
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_g2els")
+speed = 1000.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_bj30b")
