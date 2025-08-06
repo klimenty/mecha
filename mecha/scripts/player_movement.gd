@@ -1,9 +1,12 @@
 extends CharacterBody2D
 
 var movement_key_buffer: Array[Vector2i] = []
+var look_direction_key_buffer: Array[Vector2i] = []
+var look_direction: Vector2i = Vector2.DOWN
 var direction_vector: Vector2i = Vector2i.ZERO
 var last_direction_vector: Vector2i = Vector2i.ZERO
 @export var speed: float = 300.0
+@onready var animated_sprite_2d = $AnimatedSprite2D
 
 func _input(event: InputEvent) -> void:
 	#TEMPORARY!
@@ -11,7 +14,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("escape"):
 		get_tree().quit()
 
-	#Store all pressed movement buttons to key_buffer variable
+	#Store all pressed movement buttons to movement_key_buffer variable
 	if event.is_action_pressed("move_up"):
 		movement_key_buffer.append(Vector2i.UP)
 	elif event.is_action_pressed("move_down"):
@@ -20,8 +23,24 @@ func _input(event: InputEvent) -> void:
 		movement_key_buffer.append(Vector2i.LEFT)
 	elif event.is_action_pressed("move_right"):
 		movement_key_buffer.append(Vector2i.RIGHT)
+		
+	#Store all pressed buttons for look direction to look_direction_key_buffer variable
+	if event.is_action_pressed("look_up"):
+		look_direction_key_buffer.append(Vector2i.UP)
+	elif event.is_action_pressed("look_down"):
+		look_direction_key_buffer.append(Vector2i.DOWN)
+	elif event.is_action_pressed("look_left"):
+		look_direction_key_buffer.append(Vector2i.LEFT)
+	elif event.is_action_pressed("look_right"):
+		look_direction_key_buffer.append(Vector2i.RIGHT)
 
-	#Delete buttons from key_buffer if button was released
+	#Store last look or movement direction to look_direction variable
+	if look_direction_key_buffer:
+		look_direction = look_direction_key_buffer.back()
+	elif movement_key_buffer:
+		look_direction = movement_key_buffer.back()
+
+	#Delete buttons from movement_key_buffer if button was released
 	if event.is_action_released("move_up"):
 		movement_key_buffer.erase(Vector2i.UP)
 	elif event.is_action_released("move_down"):
@@ -30,6 +49,16 @@ func _input(event: InputEvent) -> void:
 		movement_key_buffer.erase(Vector2i.LEFT)
 	elif event.is_action_released("move_right"):
 		movement_key_buffer.erase(Vector2i.RIGHT)
+
+	#Delete buttons from look_direction_key_buffer if button was released
+	if event.is_action_released("look_up"):
+		look_direction_key_buffer.erase(Vector2i.UP)
+	elif event.is_action_released("look_down"):
+		look_direction_key_buffer.erase(Vector2i.DOWN)
+	elif event.is_action_released("look_left"):
+		look_direction_key_buffer.erase(Vector2i.LEFT)
+	elif event.is_action_released("look_right"):
+		look_direction_key_buffer.erase(Vector2i.RIGHT)
 
 
 func _physics_process(_delta: float) -> void:
@@ -42,5 +71,16 @@ func _physics_process(_delta: float) -> void:
 			velocity = direction_vector * speed
 		else:
 			velocity = velocity.move_toward(Vector2i.ZERO, speed)
+		
+		
+		match look_direction:
+			Vector2i.DOWN:
+				animated_sprite_2d.play("idle_down")
+			Vector2i.UP:
+				animated_sprite_2d.play("idle_up")
+			Vector2i.LEFT:
+				animated_sprite_2d.play("idle_left")
+			Vector2i.RIGHT:
+				animated_sprite_2d.play("idle_right")
 			
 		move_and_slide()
