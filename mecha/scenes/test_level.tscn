@@ -1,7 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://cne2n5rchq5ps"]
+[gd_scene load_steps=10 format=3 uid="uid://cne2n5rchq5ps"]
 
 [ext_resource type="PackedScene" uid="uid://rhsv4wap5w5m" path="res://scenes/player.tscn" id="1_2venv"]
-[ext_resource type="Texture2D" uid="uid://b4jf7lrw2so5y" path="res://icon.svg" id="2_paw1w"]
 [ext_resource type="Texture2D" uid="uid://cjjde05noq6b4" path="res://Texstures & backgrounds/Road.png" id="3_j6w7d"]
 [ext_resource type="PackedScene" uid="uid://8b4fi1w7i30r" path="res://scenes/collision_platform.tscn" id="4_x4b8f"]
 [ext_resource type="Texture2D" uid="uid://i3m2iloobok0" path="res://Texstures & backgrounds/Platform_1.png" id="5_7gix3"]
@@ -16,11 +15,7 @@
 [node name="player" parent="." instance=ExtResource("1_2venv")]
 speed = 300.0
 
-[node name="Camera2D" type="Camera2D" parent="."]
-
-[node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(-793, -318)
-texture = ExtResource("2_paw1w")
+[node name="Camera2D" type="Camera2D" parent="player"]
 
 [node name="Road" type="Sprite2D" parent="."]
 z_index = -1

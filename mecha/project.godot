@@ -13,7 +13,6 @@ config_version=5
 config/name="mecha"
 run/main_scene="uid://cne2n5rchq5ps"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
 
 [input]
 
