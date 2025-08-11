@@ -801,6 +801,7 @@ radius = 35.0
 height = 124.0
 
 [node name="player" type="CharacterBody2D"]
+floor_snap_length = 2.0
 script = ExtResource("1_g2els")
 speed = 1000.0
 

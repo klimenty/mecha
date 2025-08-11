@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bq23j86a2vlv8"
-path="res://.godot/imported/Sky.png-5c0d3a7b0cf40d4b28fd7cf22d414852.ctex"
+uid="uid://ryt0xvc6dnp0"
+path="res://.godot/imported/Platform_0.png-a593e3334766d454d35609feb1aaf3fc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Texstures & backgrounds/Sky.png"
-dest_files=["res://.godot/imported/Sky.png-5c0d3a7b0cf40d4b28fd7cf22d414852.ctex"]
+source_file="res://assets/level_picture/Platform_0.png"
+dest_files=["res://.godot/imported/Platform_0.png-a593e3334766d454d35609feb1aaf3fc.ctex"]
 
 [params]
 

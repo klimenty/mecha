@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvq1acw7rjn45"
-path="res://.godot/imported/Platform_2.png-96f87c892066cae7718a15b1dae7d937.ctex"
+uid="uid://cjjde05noq6b4"
+path="res://.godot/imported/Road.png-f628ce4385728f0ff66481f4d1404cdf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Texstures & backgrounds/Platform_2.png"
-dest_files=["res://.godot/imported/Platform_2.png-96f87c892066cae7718a15b1dae7d937.ctex"]
+source_file="res://assets/level_picture/Road.png"
+dest_files=["res://.godot/imported/Road.png-f628ce4385728f0ff66481f4d1404cdf.ctex"]
 
 [params]
 

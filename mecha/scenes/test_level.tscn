@@ -1,14 +1,16 @@
-[gd_scene load_steps=10 format=3 uid="uid://cne2n5rchq5ps"]
+[gd_scene load_steps=12 format=3 uid="uid://cne2n5rchq5ps"]
 
 [ext_resource type="PackedScene" uid="uid://rhsv4wap5w5m" path="res://scenes/player.tscn" id="1_2venv"]
-[ext_resource type="Texture2D" uid="uid://cjjde05noq6b4" path="res://Texstures & backgrounds/Road.png" id="3_j6w7d"]
+[ext_resource type="Texture2D" uid="uid://cjjde05noq6b4" path="res://assets/level_picture/Road.png" id="3_j6w7d"]
 [ext_resource type="PackedScene" uid="uid://8b4fi1w7i30r" path="res://scenes/collision_platform.tscn" id="4_x4b8f"]
-[ext_resource type="Texture2D" uid="uid://i3m2iloobok0" path="res://Texstures & backgrounds/Platform_1.png" id="5_7gix3"]
-[ext_resource type="Texture2D" uid="uid://cvq1acw7rjn45" path="res://Texstures & backgrounds/Platform_2.png" id="6_4asn1"]
-[ext_resource type="Texture2D" uid="uid://boeeskoxqjg0h" path="res://Texstures & backgrounds/Platform_3.png" id="7_dw7u0"]
-[ext_resource type="Texture2D" uid="uid://da70k0svivxv3" path="res://Texstures & backgrounds/Platform_4.png" id="8_fyxdr"]
-[ext_resource type="Texture2D" uid="uid://c5jh4ka3peeip" path="res://Texstures & backgrounds/Wall.png" id="9_kpk0m"]
-[ext_resource type="Texture2D" uid="uid://bq23j86a2vlv8" path="res://Texstures & backgrounds/Sky.png" id="10_4asn1"]
+[ext_resource type="Texture2D" uid="uid://i3m2iloobok0" path="res://assets/level_picture/Platform_1.png" id="5_7gix3"]
+[ext_resource type="Texture2D" uid="uid://cvq1acw7rjn45" path="res://assets/level_picture/Platform_2.png" id="6_4asn1"]
+[ext_resource type="Texture2D" uid="uid://boeeskoxqjg0h" path="res://assets/level_picture/Platform_3.png" id="7_dw7u0"]
+[ext_resource type="Texture2D" uid="uid://da70k0svivxv3" path="res://assets/level_picture/Platform_4.png" id="8_fyxdr"]
+[ext_resource type="Texture2D" uid="uid://c5jh4ka3peeip" path="res://assets/level_picture/Wall.png" id="9_kpk0m"]
+[ext_resource type="Texture2D" uid="uid://bq23j86a2vlv8" path="res://assets/level_picture/Sky.png" id="10_4asn1"]
+[ext_resource type="Script" uid="uid://b8tk24d3u61rs" path="res://scripts/Sprite_player_right.gd" id="10_dw7u0"]
+[ext_resource type="Script" uid="uid://b8jvwcgqo8r7u" path="res://scripts/button.gd" id="10_fyxdr"]
 
 [node name="test_level" type="Node2D"]
 
@@ -166,3 +168,21 @@ z_index = -2
 position = Vector2(847.5, -986)
 scale = Vector2(11.995, 4.07)
 texture = ExtResource("10_4asn1")
+
+[node name="Button" type="Button" parent="." node_paths=PackedStringArray("player", "target_position")]
+offset_left = -275.0
+offset_top = -168.0
+offset_right = -238.0
+offset_bottom = -125.0
+flat = true
+script = ExtResource("10_fyxdr")
+player = NodePath("../player")
+target_position = NodePath("../Marker2D2")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(-248, -151)
+script = ExtResource("10_dw7u0")
+
+[node name="Marker2D2" type="Marker2D" parent="."]
+position = Vector2(-249, -502)
+script = ExtResource("10_dw7u0")

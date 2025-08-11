@@ -148,4 +148,5 @@ func _physics_process(_delta: float) -> void:
 				Vector2i.RIGHT:
 					animated_sprite_2d.play("walk_right")
 					
+					
 	move_and_slide()
