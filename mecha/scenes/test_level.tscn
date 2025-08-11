@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cne2n5rchq5ps"]
+[gd_scene load_steps=14 format=3 uid="uid://cne2n5rchq5ps"]
 
 [ext_resource type="PackedScene" uid="uid://rhsv4wap5w5m" path="res://scenes/player.tscn" id="1_2venv"]
 [ext_resource type="Texture2D" uid="uid://cjjde05noq6b4" path="res://assets/level_picture/Road.png" id="3_j6w7d"]
@@ -9,8 +9,16 @@
 [ext_resource type="Texture2D" uid="uid://da70k0svivxv3" path="res://assets/level_picture/Platform_4.png" id="8_fyxdr"]
 [ext_resource type="Texture2D" uid="uid://c5jh4ka3peeip" path="res://assets/level_picture/Wall.png" id="9_kpk0m"]
 [ext_resource type="Texture2D" uid="uid://bq23j86a2vlv8" path="res://assets/level_picture/Sky.png" id="10_4asn1"]
-[ext_resource type="Script" uid="uid://b8tk24d3u61rs" path="res://scripts/Sprite_player_right.gd" id="10_dw7u0"]
 [ext_resource type="Script" uid="uid://b8jvwcgqo8r7u" path="res://scripts/button.gd" id="10_fyxdr"]
+
+[sub_resource type="Gradient" id="Gradient_4asn1"]
+offsets = PackedFloat32Array(0, 0.00324675, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.876623, 0.876623, 0.876623, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dw7u0"]
+gradient = SubResource("Gradient_4asn1")
+
+[sub_resource type="GDScript" id="GDScript_4asn1"]
 
 [node name="test_level" type="Node2D"]
 
@@ -174,6 +182,7 @@ offset_left = -275.0
 offset_top = -168.0
 offset_right = -238.0
 offset_bottom = -125.0
+icon = SubResource("GradientTexture2D_dw7u0")
 flat = true
 script = ExtResource("10_fyxdr")
 player = NodePath("../player")
@@ -181,8 +190,7 @@ target_position = NodePath("../Marker2D2")
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(-248, -151)
-script = ExtResource("10_dw7u0")
 
 [node name="Marker2D2" type="Marker2D" parent="."]
 position = Vector2(-249, -502)
-script = ExtResource("10_dw7u0")
+script = SubResource("GDScript_4asn1")
