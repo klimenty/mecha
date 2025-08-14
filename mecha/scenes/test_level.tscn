@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://da70k0svivxv3" path="res://assets/level_picture/Platform_4.png" id="8_fyxdr"]
 [ext_resource type="Texture2D" uid="uid://c5jh4ka3peeip" path="res://assets/level_picture/Wall.png" id="9_kpk0m"]
 [ext_resource type="Texture2D" uid="uid://bq23j86a2vlv8" path="res://assets/level_picture/Sky.png" id="10_4asn1"]
-[ext_resource type="Script" uid="uid://b8jvwcgqo8r7u" path="res://scripts/button.gd" id="10_fyxdr"]
 
 [sub_resource type="Gradient" id="Gradient_4asn1"]
 offsets = PackedFloat32Array(0, 0.00324675, 1)
@@ -17,6 +16,8 @@ colors = PackedColorArray(0, 0, 0, 1, 0.876623, 0.876623, 0.876623, 1, 1, 1, 1, 
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_dw7u0"]
 gradient = SubResource("Gradient_4asn1")
+
+[sub_resource type="GDScript" id="GDScript_7gix3"]
 
 [sub_resource type="GDScript" id="GDScript_4asn1"]
 
@@ -177,16 +178,14 @@ position = Vector2(847.5, -986)
 scale = Vector2(11.995, 4.07)
 texture = ExtResource("10_4asn1")
 
-[node name="Button" type="Button" parent="." node_paths=PackedStringArray("player", "target_position")]
-offset_left = -275.0
-offset_top = -168.0
-offset_right = -238.0
-offset_bottom = -125.0
+[node name="Button" type="Button" parent="."]
+offset_left = -523.0
+offset_top = -287.0
+offset_right = -451.0
+offset_bottom = -215.0
 icon = SubResource("GradientTexture2D_dw7u0")
 flat = true
-script = ExtResource("10_fyxdr")
-player = NodePath("../player")
-target_position = NodePath("../Marker2D2")
+script = SubResource("GDScript_7gix3")
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(-248, -151)

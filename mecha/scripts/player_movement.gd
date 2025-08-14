@@ -12,6 +12,12 @@ var sideway_movement_multiplicator: float = 0.5
 var backward_movement_multiplicator: float = 0.25
 var is_runnign: bool = false
 @onready var animated_sprite_2d = $AnimatedSprite2D
+@export var teleport_target: Marker2D
+@export var teleport_cooldown = 1.0
+@export var teleport_key = "ui_accept"
+
+var can_teleport = true
+var is_teleporting: bool = false
 #enum States {IDLE, WALKING, RUNNING}
 #var state: States = States.IDLE
 
@@ -150,3 +156,26 @@ func _physics_process(_delta: float) -> void:
 					
 					
 	move_and_slide()
+	
+	# Телепортация по клавише
+	if Input.is_action_just_pressed(teleport_key) and can_teleport and teleport_target:
+		start_teleport()
+
+func start_teleport():
+	can_teleport = false
+	
+	# Анимация исчезновения
+	var tween = create_tween()
+	tween.tween_property($Sprite2D, "modulate:a", 0, 0.2)
+	
+	# Собственно телепортация
+	tween.tween_callback(func(): 
+		global_position = teleport_target.global_position
+		velocity = Vector2.ZERO  # Сбрасываем скорость
+	)
+	
+	# Анимация появления
+	tween.tween_property($Sprite2D, "modulate:a", 1, 0.2)
+	
+	# Восстановление возможности телепортации
+	tween.tween_callback(func(): can_teleport = true)
